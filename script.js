@@ -20,10 +20,16 @@ function function_scaneDev() {
             { services: [NORDIC_SERVICE] }
         ]
     })
-        .then(function (device) {
-            console.log(1, 'Device Name:       ' + device.name);
-            console.log(1, 'Device ID:         ' + device.id);    
-        })
-        .catch(error => { console.log(error); })    
+    .then(function (device) {
+        console.log(1, 'Device Name:       ' + device.name);
+        console.log(1, 'Device ID:         ' + device.id);    
+    })
+    .then(characteristic => {
+        return characteristic.readValue();
+    })
+    .then(value => {
+        console.log(value.getUint8(0));
+    })
+    .catch(error => { console.log(error); })    
 }
 
