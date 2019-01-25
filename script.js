@@ -25,6 +25,8 @@ function function_scaneDev() {
 }
 
 document.getElementById("scaneBtn").addEventListener("click",function(){
+    console.log("->addEventListener...")
+
     Puck.eval("Puck.light()", function(v) {
         console.log(x)
     })
