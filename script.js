@@ -22,7 +22,8 @@ function function_scaneDev() {
     })
     .then(function (device) {
         console.log(1, 'Device Name:       ' + device.name);
-        console.log(1, 'Device ID:         ' + device.id);    
+        console.log(1, 'Device ID:         ' + device.id);  
+        return device.gatt.connect();  
     })
     .then(characteristic => {
         return characteristic.readValue();
