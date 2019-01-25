@@ -21,11 +21,12 @@ function function_scaneDev() {
         })
         .catch(error => { console.log(error); })
     
-    addEventListener(function(){
-        Puck.eval("Puck.light()", function(v) {
-            console.log(x)
-        })
-    })
+    
 }
 
+addEventListener("scaneBtn",function(){
+    Puck.eval("Puck.light()", function(v) {
+        console.log(x)
+    })
+})
 
