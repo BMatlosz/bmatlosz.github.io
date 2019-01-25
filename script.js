@@ -20,10 +20,13 @@ function function_scaneDev() {
             { services: [NORDIC_SERVICE] }
         ]
     })
-    .then(function (device) {
+    .then(device => {
         console.log(1, 'Device Name:       ' + device.name);
         console.log(1, 'Device ID:         ' + device.id);  
         return device.gatt.connect();  
+    })
+    .then(server => {
+        return server.getPrimaryService(NORDIC_SERVICE);
     })
     .then(characteristic => {
         return characteristic.readValue();
