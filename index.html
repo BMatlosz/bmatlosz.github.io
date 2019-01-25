@@ -21,5 +21,13 @@
 		<div class="jumbotron">
 			<h1 class="display-4">BLE API</h1>
 		</div>
+
+		<button type="button" name="scaneBtn" onclick="scaneDevices();" class="btn btn-primary btn-md">Scane Bluetooth Devices</button>
+
+		<script>
+			$('#scaneBtn').on('click',function(event) {
+				console.log("test click btn");
+			});
+		</script>
 	</body>
 </html>
