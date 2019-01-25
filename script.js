@@ -28,9 +28,9 @@ function function_scaneDev() {
     .then(server => {
         return server.getPrimaryService(NORDIC_SERVICE);
     })
-    .then(characteristic => {
-        return characteristic.readValue();
-    })
+    // .then(characteristic => {
+    //     return characteristic.readValue();
+    // })
     .then(value => {
         console.log(value.getUint8(0));
     })
