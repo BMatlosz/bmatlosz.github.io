@@ -14,10 +14,10 @@ function function_scaneDev() {
             console.log(1, 'Device Name:       ' + device.name);
             console.log(1, 'Device ID:         ' + device.id);
 
-            device.addEventListener('gattserverdisconnected', function() {
-                console.log(1, "Disconnected (gattserverdisconnected)");
-                connection.close();
+            Puck.eval("Puck.light()", function(v) {
+                console.log(x)
             })
+            
         })
         .catch(error => { console.log(error); })
     
