@@ -12,12 +12,7 @@ function function_scaneDev() {
     })
         .then(function (device) {
             console.log(1, 'Device Name:       ' + device.name);
-            console.log(1, 'Device ID:         ' + device.id);
-
-            Puck.eval("Puck.light()", function(v) {
-                console.log(x)
-            })
-            
+            console.log(1, 'Device ID:         ' + device.id);    
         })
         .catch(error => { console.log(error); })
     
