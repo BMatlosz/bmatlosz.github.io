@@ -13,7 +13,16 @@ function function_scaneDev() {
         .then(function (device) {
             console.log(1, 'Device Name:       ' + device.name);
             console.log(1, 'Device ID:         ' + device.id);
-        })
-        .catch(error => { console.log(error); });
 
+            device.addEventListener('gattserverdisconnected', function() {
+                console.log(1, "Disconnected (gattserverdisconnected)");
+                connection.close();
+            })
+        })
+        .then(function(characteristic) {
+            var val = characteristic.readValue();
+            console.log(val);
+        })
+        .catch(error => { console.log(error); })
 }
+
