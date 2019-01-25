@@ -19,10 +19,13 @@ function function_scaneDev() {
                 connection.close();
             })
         })
-        .then(function(characteristic) {
-            var val = characteristic.readValue();
-            console.log(val);
-        })
         .catch(error => { console.log(error); })
+    
+    addEventListener(function(){
+        Puck.eval("Puck.light()", function(v) {
+            console.log(x)
+        })
+    })
 }
+
 
