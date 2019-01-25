@@ -1,5 +1,15 @@
 
 var NORDIC_SERVICE = "6e400001-b5a3-f393-e0a9-e50e24dcca9e";
+var idBtn = document.getElementById('scaneBtn');
+
+function readVal() {
+    Puck.eval("Puck.light()", function(v) {
+        console.log(x)
+    })
+}
+if(idBtn) {
+    idBtn.addEventListener('click',readVal,false);
+}
 
 function function_scaneDev() {
     console.log("Click scane button");
@@ -14,16 +24,6 @@ function function_scaneDev() {
             console.log(1, 'Device Name:       ' + device.name);
             console.log(1, 'Device ID:         ' + device.id);    
         })
-        .catch(error => { console.log(error); })
-    
-    
+        .catch(error => { console.log(error); })    
 }
-
-document.getElementById("scaneBtn").addEventListener("click",function(){
-    console.log("->addEventListener...")
-
-    Puck.eval("Puck.light()", function(v) {
-        console.log(x)
-    })
-})
 
