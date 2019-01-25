@@ -1,4 +1,8 @@
 
 function function_scaneDev() {
-    console.log("test scane btn")
+    console.log("Click scane button");
+    navigator.bluetooth.requestDevice()
+        .then(device => { /* ... */ })
+        .catch(error => { console.log(error); });
+
 }
