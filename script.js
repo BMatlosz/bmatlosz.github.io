@@ -29,17 +29,26 @@ function function_scaneDev() {
     .then(characteristic  => {
         console.log('Characteristic..... ');
         console.log(characteristic );
-        document.getElementById("scaneBtn").addEventListener("click", function() {
-            console.log("start listener event...")
-            var readVal = characteristic.getDescriptors();
-            console.log(readVal);
-            return readVal;
-        })
+        // document.getElementById("scaneBtn").addEventListener("click", function() {
+        //     console.log("start listener event...")
+        //     var readVal = characteristic.getDescriptors();
+        //     console.log(readVal);
+        //     return readVal;
+        // })
+        return characteristic.getDescriptors();
         
     })
-    .then(value => {
-        console.log(value.getUint8(0));
+    .then(descriptors => {
+        let queue = Promise.resolve();
+        descriptors.forEach(descriptor => {
+            console.log("UUID..");
+            console.log(descriptor.uuid);
+        });
     })
+            
+    // .then(value => {
+    //     console.log(value.getUint8(0));
+    // })
     .catch(error => { console.log(error); })    
 }
 
