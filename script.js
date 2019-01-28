@@ -1,18 +1,18 @@
-
+/*
+ID BLE Devices
+*/
 var NORDIC_SERVICE = "6e400001-b5a3-f393-e0a9-e50e24dcca9e";
 var NORDIC_TX = "6e400002-b5a3-f393-e0a9-e50e24dcca9e";
 var NORDIC_RX = "6e400003-b5a3-f393-e0a9-e50e24dcca9e";
 
 var idBtn = document.getElementById('scaneBtn');
 
-function readVal() {
-    Puck.eval("Puck.light()", function(v) {
-        console.log(x)
-    })
-}
-if(idBtn) {
-    idBtn.addEventListener('click',readVal,false);
-}
+
+scaneBtn.addEventListener('click',function(event){
+    console.log("test listener");
+
+});
+
 
 function function_scaneDev() {
     console.log("Click scane button");
