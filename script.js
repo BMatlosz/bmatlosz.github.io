@@ -12,19 +12,17 @@ var rxCharacteristic = undefined;
 function function_scaneDev() {
     console.log("Click scane button");
     navigator.bluetooth.requestDevice({
-        // filters: [
-        //     { namePrefix: 'Puck.js' },
-        //     { namePrefix: 'Pixl.js' },
-        //     { namePrefix: 'berecz' },
-        //     { namePrefix: 'EspruinoHub' }
-        //     //{ services: [NORDIC_SERVICE] }
-        // ],
-        acceptAllDevices: true
+        filters: [
+            { namePrefix: 'Puck.js' },
+            { namePrefix: 'Pixl.js' },
+            { namePrefix: 'berecz' },
+            { namePrefix: 'EspruinoHub' }
+            //{ services: [NORDIC_SERVICE] }
+        ],
     })
     .then(device => {
         console.log(1, 'Device Name:       ' + device.name);
         console.log(1, 'Device ID:         ' + device.id);
-    
         return device.gatt.connect();  
     })
     .then(server => {
@@ -33,32 +31,16 @@ function function_scaneDev() {
     })
     .then(service => {
         console.log(2, "Got service");
-        service.getCharacteristic(NORDIC_RX);
+        service.getCharacteristic(0xFFFF);
       })
     .then(characteristic  => {
         rxCharacteristic = characteristic;
         console.log(2, "RX characteristic:"+JSON.stringify(rxCharacteristic));
-
-        rxCharacteristic.addEventListener('characteristicvaluechanged', function(event) {
-            var value = event.target.value.buffer; // get arraybuffer
-            var str = ab2str(value);
-            console.log(3, "Received "+JSON.stringify(str));
-            connection.emit('data', str);
-          });
-          return rxCharacteristic.startNotifications();
-
-        // console.log(characteristic );
-        // document.getElementById("scaneBtn").addEventListener("click", function() {
-        //     console.log("start listener event...")
-        //     var readVal = characteristic.getDescriptors();
-        //     console.log(readVal);
-        //     return readVal;
-        // })
-        // return characteristic.readValue();
+        return rxCharacteristic.readValue();
         
     })            
     .then(value => {
-        console.log(value.getUint8(0));
+        console.log("Odczyt danej: " + value.getUint8(0));
     })
     .catch(error => { console.log(error); })    
 }
