@@ -15,6 +15,8 @@ function function_scaneDev() {
         filters: [
             { namePrefix: 'Puck.js' },
             { namePrefix: 'Pixl.js' },
+            { namePrefix: 'berecz' },
+            { namePrefix: 'EspruinoHub' }
             { name: 'berecz' },
             { name: 'EspruinoHub' }
             //{ services: [NORDIC_SERVICE] }
