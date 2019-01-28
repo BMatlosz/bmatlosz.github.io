@@ -36,7 +36,7 @@ function function_scaneDev() {
     })
     .then(characteristic  => {
         console.log('> Characteristic...');
-        return characteristic.writeValue("LED1.set()\n");
+        return characteristic.writeCharacteristicValue("LED1.set()\n");
         // rxCharacteristic = characteristic;
         // rxCharacteristic2 = characteristic;
 
