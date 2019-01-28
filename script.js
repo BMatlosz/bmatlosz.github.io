@@ -7,7 +7,8 @@ var NORDIC_RX = "6e400003-b5a3-f393-e0a9-e50e24dcca9e";
 
 var btServer = undefined;
 var txCharacteristic = undefined;
-var rxCharacteristic = undefined;
+var rxCharacteristic;
+var rxCharacteristic2;
 
 function function_scaneDev() {
     console.log("Click scane button");
@@ -36,8 +37,12 @@ function function_scaneDev() {
     .then(characteristic  => {
         console.log('> Characteristic...');
         rxCharacteristic = characteristic;
-        rxCharacteristic.addEventListener('ffff',
+        rxCharacteristic2 = characteristic;
+        rxCharacteristic.addEventListener('0xffff',
             handleBatteryLevelChanged);
+        
+        rxCharacteristic2.addEventListener('rising',
+        handleBatteryLevelChanged);
     })            
     // .then(value => {
     //     console.log("Odczyt danej: " + value.getUint8(0));
