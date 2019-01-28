@@ -31,7 +31,7 @@ function function_scaneDev() {
         console.log(characteristic );
         document.getElementById("scaneBtn").addEventListener("click", function() {
             console.log("start listener event...")
-            var readVal = characteristic.readValue();
+            var readVal = characteristic.getDescriptors();
             console.log(readVal);
             return readVal;
         })
