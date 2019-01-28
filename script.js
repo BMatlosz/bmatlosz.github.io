@@ -16,9 +16,7 @@ function function_scaneDev() {
             { namePrefix: 'Puck.js' },
             { namePrefix: 'Pixl.js' },
             { namePrefix: 'berecz' },
-            { namePrefix: 'EspruinoHub' },
-            { name: 'berecz' },
-            { name: 'EspruinoHub' }
+            { namePrefix: 'EspruinoHub' }
             //{ services: [NORDIC_SERVICE] }
         ],
         acceptAllDevices: true
