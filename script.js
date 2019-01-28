@@ -31,18 +31,23 @@ function function_scaneDev() {
     })
     .then(service => {
         console.log(2, "Got service");
-        return service.getCharacteristics();
-      })
+        return service.getCharacteristic(NORDIC_RX);
+    })
     .then(characteristic  => {
         console.log('> Characteristic...');
-        characteristic.map(c=> c.uuid).join('\n' + ' '.repeat(19));
-
-        return rxCharacteristic.readValue();
+        rxCharacteristic = characteristic;
+        rxCharacteristic.addEventListener('ffff',
+            handleBatteryLevelChanged);
         
     })            
     .then(value => {
         console.log("Odczyt danej: " + value.getUint8(0));
     })
     .catch(error => { console.log(error); })    
+}
+
+function handleBatteryLevelChanged(event) {
+    let Val = event.target.value.getUint8(0);
+    console.log('> Value is ' + Val + '%');
 }
 
