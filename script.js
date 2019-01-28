@@ -31,11 +31,12 @@ function function_scaneDev() {
     })
     .then(service => {
         console.log(2, "Got service");
-        return service.getCharacteristic(0xFFFF);
+        return service.getCharacteristic();
       })
     .then(characteristic  => {
-        rxCharacteristic = characteristic;
-        console.log(2, "RX characteristic:"+JSON.stringify(rxCharacteristic));
+        console.log('> Characteristic...');
+        characteristic.map(c=> c.uuid).join('\n' + ' '.repeat(19));
+
         return rxCharacteristic.readValue();
         
     })            
