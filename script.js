@@ -5,6 +5,7 @@ var NORDIC_SERVICE = "6e400001-b5a3-f393-e0a9-e50e24dcca9e";
 var NORDIC_TX = "6e400002-b5a3-f393-e0a9-e50e24dcca9e";
 var NORDIC_RX = "6e400003-b5a3-f393-e0a9-e50e24dcca9e";
 
+
 function function_scaneDev() {
     console.log("Click scane button");
     navigator.bluetooth.requestDevice({
@@ -25,13 +26,16 @@ function function_scaneDev() {
     .then(service => {
         service.getCharacteristic(NORDIC_RX);
       })
-    .then(characteristic => {
+    .then(characteristic  => {
         console.log('Characteristic..... ');
-        console.log(characteristic);
+        console.log(characteristic );
         document.getElementById("scaneBtn").addEventListener("click", function() {
-            alert("Listener event...");
+            console.log("start listener event...")
+            var readVal = characteristic.readValue();
+            console.log(readVal);
+            return readVal;
         })
-        return characteristic.readValue();
+        
     })
     .then(value => {
         console.log(value.getUint8(0));
