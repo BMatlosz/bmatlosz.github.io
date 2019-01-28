@@ -38,11 +38,10 @@ function function_scaneDev() {
         rxCharacteristic = characteristic;
         rxCharacteristic.addEventListener('ffff',
             handleBatteryLevelChanged);
-        
     })            
-    .then(value => {
-        console.log("Odczyt danej: " + value.getUint8(0));
-    })
+    // .then(value => {
+    //     console.log("Odczyt danej: " + value.getUint8(0));
+    // })
     .catch(error => { console.log(error); })    
 }
 
