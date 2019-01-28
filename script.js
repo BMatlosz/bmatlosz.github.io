@@ -35,20 +35,12 @@ function function_scaneDev() {
         //     console.log(readVal);
         //     return readVal;
         // })
-        return characteristic.getDescriptors();
+        return characteristic.readValue();
         
+    })            
+    .then(value => {
+        console.log(value.getUint8(0));
     })
-    .then(descriptors => {
-        let queue = Promise.resolve();
-        descriptors.forEach(descriptor => {
-            console.log("UUID..");
-            console.log(descriptor.uuid);
-        });
-    })
-            
-    // .then(value => {
-    //     console.log(value.getUint8(0));
-    // })
     .catch(error => { console.log(error); })    
 }
 
