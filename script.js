@@ -32,20 +32,21 @@ function function_scaneDev() {
     })
     .then(service => {
         console.log(2, "Got service");
-        return service.getCharacteristic(NORDIC_RX);
+        return service.getCharacteristic(NORDIC_TX); // tx - send , rx - recaive
     })
     .then(characteristic  => {
         console.log('> Characteristic...');
-        rxCharacteristic = characteristic;
-        rxCharacteristic2 = characteristic;
+        return characteristic.writeValue("LED1.set()\n");
+        // rxCharacteristic = characteristic;
+        // rxCharacteristic2 = characteristic;
 
-        rxCharacteristic.addEventListener(NORDIC_RX,
-            handleBatteryLevelChanged);
+        // rxCharacteristic.addEventListener(NORDIC_RX,
+        //     handleBatteryLevelChanged);
 
         
-        rxCharacteristic2.addEventListener('rising',
-        handleBatteryLevelChanged);
-    })            
+        // rxCharacteristic2.addEventListener('rising',
+        // handleBatteryLevelChanged);
+    })          
     // .then(value => {
     //     console.log("Odczyt danej: " + value.getUint8(0));
     // })
