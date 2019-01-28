@@ -31,7 +31,7 @@ function function_scaneDev() {
     })
     .then(service => {
         console.log(2, "Got service");
-        service.getCharacteristic(0xFFFF);
+        return service.getCharacteristic(0xFFFF);
       })
     .then(characteristic  => {
         rxCharacteristic = characteristic;
