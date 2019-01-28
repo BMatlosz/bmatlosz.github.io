@@ -47,7 +47,7 @@ function function_scaneDev() {
 }
 
 function handleBatteryLevelChanged(event) {
-    let Val = event.target.value.getUint8(0);
+    // let Val = event.target.value.getUint8(0);
     let Val = event.target.value;
     console.log('> Value is ' + Val + '%');
 }
