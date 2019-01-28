@@ -12,20 +12,19 @@ var rxCharacteristic = undefined;
 function function_scaneDev() {
     console.log("Click scane button");
     navigator.bluetooth.requestDevice({
-        filters: [
-            { namePrefix: 'Puck.js' },
-            { namePrefix: 'Pixl.js' },
-            { namePrefix: 'berecz' },
-            { namePrefix: 'EspruinoHub' }
-            //{ services: [NORDIC_SERVICE] }
-        ],
+        // filters: [
+        //     { namePrefix: 'Puck.js' },
+        //     { namePrefix: 'Pixl.js' },
+        //     { namePrefix: 'berecz' },
+        //     { namePrefix: 'EspruinoHub' }
+        //     //{ services: [NORDIC_SERVICE] }
+        // ],
         acceptAllDevices: true
     })
     .then(device => {
         console.log(1, 'Device Name:       ' + device.name);
         console.log(1, 'Device ID:         ' + device.id);
-        
-
+    
         return device.gatt.connect();  
     })
     .then(server => {
