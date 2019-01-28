@@ -38,8 +38,10 @@ function function_scaneDev() {
         console.log('> Characteristic...');
         rxCharacteristic = characteristic;
         rxCharacteristic2 = characteristic;
-        rxCharacteristic.addEventListener('0xffff',
+
+        rxCharacteristic.addEventListener(NORDIC_RX,
             handleBatteryLevelChanged);
+
         
         rxCharacteristic2.addEventListener('rising',
         handleBatteryLevelChanged);
