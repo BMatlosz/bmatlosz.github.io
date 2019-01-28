@@ -37,6 +37,9 @@ function function_scaneDev() {
     .then(characteristic => {
         console.log('Characteristic..... ');
         console.log(characteristic);
+        document.getElementById("scaneBtn").addEventListener("click", function() {
+            alert("Listener event...");
+        })
         return characteristic.readValue();
     })
     .then(value => {
