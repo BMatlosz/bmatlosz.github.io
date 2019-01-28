@@ -23,18 +23,18 @@ function function_scaneDev() {
         console.log(1, 'Device Name:       ' + device.name);
         console.log(1, 'Device ID:         ' + device.id);
         device.addEventListener('gattserverdisconnected', function() {
-            log(1, "Disconnected (gattserverdisconnected)");
+            console.log(1, "Disconnected (gattserverdisconnected)");
             connection.close();
         });
 
         return device.gatt.connect();  
     })
     .then(server => {
-        log(1, "Connected");
+        console.log(1, "Connected");
         return server.getPrimaryService(NORDIC_SERVICE);
     })
     .then(service => {
-        log(2, "Got service");
+        console.log(2, "Got service");
         service.getCharacteristic(NORDIC_RX);
       })
     .then(characteristic  => {
