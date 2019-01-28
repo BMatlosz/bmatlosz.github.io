@@ -15,18 +15,15 @@ function function_scaneDev() {
         filters: [
             { namePrefix: 'Puck.js' },
             { namePrefix: 'Pixl.js' },
-            { namePrefix: 'Espruino' },
-            { namePrefix: 'berecz' }
+            { namePrefix: 'berecz' },
+            { namePrefix: 'EspruinoHub' }
             //{ services: [NORDIC_SERVICE] }
         ]
     })
     .then(device => {
         console.log(1, 'Device Name:       ' + device.name);
         console.log(1, 'Device ID:         ' + device.id);
-        device.addEventListener('gattserverdisconnected', function() {
-            console.log(1, "Disconnected (gattserverdisconnected)");
-            connection.close();
-        });
+        
 
         return device.gatt.connect();  
     })
