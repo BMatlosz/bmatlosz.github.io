@@ -35,6 +35,8 @@ function function_scaneDev() {
         service.getCharacteristic(NORDIC_RX);
       })
     .then(characteristic => {
+        console.log('Characteristic..... ');
+        console.log(characteristic);
         return characteristic.readValue();
     })
     .then(value => {
