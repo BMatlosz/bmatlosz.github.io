@@ -31,7 +31,7 @@ function function_scaneDev() {
     })
     .then(service => {
         console.log(2, "Got service");
-        return service.getCharacteristic();
+        return service.getCharacteristics();
       })
     .then(characteristic  => {
         console.log('> Characteristic...');
