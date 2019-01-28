@@ -24,7 +24,7 @@ function function_scaneDev() {
         return server.getPrimaryService(NORDIC_SERVICE);
     })
     .then(service => {
-        service.getCharacteristic(NORDIC_RX);
+        service.getCharacteristic("rising");
       })
     .then(characteristic  => {
         console.log('Characteristic..... ');
