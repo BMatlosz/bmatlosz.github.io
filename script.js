@@ -8,7 +8,7 @@ var NORDIC_RX = "6e400003-b5a3-f393-e0a9-e50e24dcca9e";
 var idBtn = document.getElementById('scaneBtn');
 
 
-scaneBtn.addEventListener('click',function(event){
+idBtn.addEventListener('click',function(event){
     console.log("test listener");
 
 });
