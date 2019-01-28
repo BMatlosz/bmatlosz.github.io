@@ -20,7 +20,8 @@ function function_scaneDev() {
             { name: 'berecz' },
             { name: 'EspruinoHub' }
             //{ services: [NORDIC_SERVICE] }
-        ]
+        ],
+        acceptAllDevices: true
     })
     .then(device => {
         console.log(1, 'Device Name:       ' + device.name);
