@@ -10,6 +10,9 @@ var txCharacteristic = undefined;
 var rxCharacteristic;
 var rxCharacteristic2;
 
+var nameDevice = "";
+var idDevice = "";
+
 // var id = 0;
 // var currentdate = new Date();
 // var dateFormat = 'MMMM DD YYYY';
@@ -91,8 +94,10 @@ function function_scaneDev() {
         ],
     })
     .then(device => {
-        console.log(1, 'Device Name:       ' + device.name);
-        console.log(1, 'Device ID:         ' + device.id);
+        nameDevice = device.name;
+        idDevice = device.id;
+        console.log(1, 'Device Name:       ' + nameDevice);
+        console.log(1, 'Device ID:         ' + idDevice);
         return device.gatt.connect();  
     })
     .then(server => {
@@ -114,7 +119,7 @@ function function_scaneDev() {
             console.log(3, "Received "+JSON.stringify(str));
             
             var itemList = document.getElementById("consoleList")
-            itemList.append("<li class='list-group-item'>"+ device.id +" | " + device.name + " | " + str + "</li>")
+            itemList.append("<li class='list-group-item'>"+ idDevice +" | " + nameDevice + " | " + str + "</li>")
             connection.emit('data', str);
         });
         return rxCharacteristic.startNotifications();
