@@ -61,12 +61,7 @@ var cfg = {
         }
     }
 };
-var chart = new Chart(ctx, cfg);
-
-
-window.onload = function() {    
-    window.myLine = new Chart(ctx, cfg);
-};
+window.myLine = new Chart(ctx, cfg);
 
 
 /*
