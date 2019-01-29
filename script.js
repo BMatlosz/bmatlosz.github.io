@@ -24,8 +24,8 @@ var cfg = {
         labels: labels,
         datasets: [{
             label: 'CHRT - Chart.js Corporation',
-            // backgroundColor: window.charColor.red,
-            // borderColor: window.chartColors.red,
+            backgroundColor: "#f38b4a",
+            borderColor: "#fff",
             data: data,
             type: 'line',
             pointRadius: 0,
@@ -113,7 +113,7 @@ function function_scaneDev() {
             var str = ab2str(value);
             console.log(3, "Received "+JSON.stringify(str));
             
-            data.push(value);
+            data.push(value.getUint8(0));
             labels.push(id++);
             window.myLine.update();
 
