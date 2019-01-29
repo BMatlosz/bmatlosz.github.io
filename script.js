@@ -111,7 +111,8 @@ function function_scaneDev() {
             var value = event.target.value.buffer; // get arraybuffer
             var str = ab2str(value);
             console.log(3, "Received "+JSON.stringify(str));
-            data.push(str);
+            
+            data.push(20);
             labels.push(date);
             window.myLine.update();
 
