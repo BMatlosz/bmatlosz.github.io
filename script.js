@@ -10,6 +10,14 @@ var txCharacteristic = undefined;
 var rxCharacteristic;
 var rxCharacteristic2;
 
+var connection = {
+    on : function(evt,cb) { this["on"+evt]=cb; },
+    emit : function(evt,data) { if (this["on"+evt]) this["on"+evt](data); },
+    isOpen : false,
+    isOpening : true,
+    txInProgress : false
+};
+
 function ab2str(buf) {
     return String.fromCharCode.apply(null, new Uint8Array(buf));
 }
