@@ -15,10 +15,9 @@
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 		
 		<script src="https://www.puck-js.com/puck.js"></script>
-		<!--
-		<button onclick="Puck.write('LED1.set();\n');">On!</button>
-		<button onclick="Puck.write('LED1.reset();\n');">Off!</button>
-		-->
+		
+		
+		
 		
 		<script src="script.js"></script>
 		
@@ -27,6 +26,8 @@
 		</div>
 
 		<div class="container marketing">
+			<button class="btn btn-primary btn-md" onclick="Puck.write('LED1.set();\n');">On!</button>
+			<button class="btn btn-primary btn-md" onclick="Puck.write('LED1.reset();\n');">Off!</button>
 			<button type="button" id="scaneBtn" onclick="function_scaneDev()" class="btn btn-primary btn-md">Scane Bluetooth Devices</button>
 		</div>
 	</body>
