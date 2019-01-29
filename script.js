@@ -19,9 +19,7 @@ var labels = [date];
 var canvas = document.getElementById("chart1");
 var ctx = canvas.getContext("2d");
 
-window.onload = function() {    
-    window.myLine = new Chart(ctx, cfg);
-};
+
 
 // var canvas = document.getElementById("chart1");
 // var ctx = canvas.getContext("2d");
@@ -35,8 +33,8 @@ var cfg = {
         labels: labels,
         datasets: [{
             label: 'CHRT - Chart.js Corporation',
-            // backgroundColor: rgb(255, 0, 0),
-            // borderColor: window.chartColors.red,
+            backgroundColor: window.charColor.red,
+            borderColor: window.chartColors.red,
             data: data,
             type: 'line',
             pointRadius: 0,
@@ -63,10 +61,12 @@ var cfg = {
         }
     }
 };
-//var chart = new Chart(ctx, cfg);
+var chart = new Chart(ctx, cfg);
 
 
-
+window.onload = function() {    
+    window.myLine = new Chart(ctx, cfg);
+};
 
 
 /*
