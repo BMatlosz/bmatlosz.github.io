@@ -113,7 +113,7 @@ function function_scaneDev() {
             var str = ab2str(value);
             console.log(3, "Received "+JSON.stringify(str));
             
-            data.push(value.getUint8(0));
+            data.push(parseInt(str));
             labels.push(id++);
             window.myLine.update();
 
