@@ -10,6 +10,12 @@ var txCharacteristic = undefined;
 var rxCharacteristic;
 var rxCharacteristic2;
 
+var currentdate = new Date();
+var dateFormat = 'MMMM DD YYYY';
+var date = currentdate.getHours()+ ":" + currentdate.getMinutes() + ":" + currentdate.getSeconds()
+var data = [];
+var labels = [date];
+
 var connection = {
     on : function(evt,cb) { this["on"+evt]=cb; },
     emit : function(evt,data) { if (this["on"+evt]) this["on"+evt](data); },
@@ -52,10 +58,12 @@ function function_scaneDev() {
         rxCharacteristic = characteristic;
         console.log(2, "RX characteristic:"+JSON.stringify(rxCharacteristic));
         rxCharacteristic.addEventListener('characteristicvaluechanged', function(event) {
-          var value = event.target.value.buffer; // get arraybuffer
-          var str = ab2str(value);
-          console.log(3, "Received "+JSON.stringify(str));
-          connection.emit('data', str);
+            var value = event.target.value.buffer; // get arraybuffer
+            var str = ab2str(value);
+            console.log(3, "Received "+JSON.stringify(str));
+            data.push(str);
+            labels.push(date);
+            connection.emit('data', str);
         });
         return rxCharacteristic.startNotifications();
     })          
@@ -79,14 +87,11 @@ function randomBar(date, lastClose) {
     };
 }
 
-var dateFormat = 'MMMM DD YYYY';
-var date = moment('April 01 2017', dateFormat);
-var data = [randomBar(date, 30)];
-var labels = [date];
+
 while (data.length < 60) {
     date = date.clone().add(1, 'd');
     if (date.isoWeekday() <= 5) {
-        data.push(randomBar(date, data[data.length - 1].y));
+        data.push(randomBar(Date, data[data.length - 1].y));
         labels.push(date);
     }
 }
