@@ -50,6 +50,7 @@ function function_scaneDev() {
     })          
     .then(value => {
         var testVal = value;
+        debugger
         console.log("Odczyt danej: " + value.getUint8(0));
     })
     .catch(error => { console.log(error); })    
