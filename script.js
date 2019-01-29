@@ -114,12 +114,13 @@ function function_scaneDev() {
         rxCharacteristic = characteristic;
         console.log(2, "RX characteristic:"+JSON.stringify(rxCharacteristic));
         rxCharacteristic.addEventListener('characteristicvaluechanged', function(event) {
+            var value1 = event.target.value.buffer; // get arraybuffer
             var value = event.target.value.getUint8(0); // get arraybuffer
             var str = ab2str(value);
             console.log(3, "Received "+JSON.stringify(str));
             
-            var itemList = document.getElementById("consoleList")
-            itemList.append("+ idDevice +" | " + nameDevice + " |  + str )
+            var itemList = document.getElementById("consoleList");
+            itemList.append(idDevice +" | " + nameDevice + " | " + str + "\n");
             connection.emit('data', str);
         });
         return rxCharacteristic.startNotifications();
