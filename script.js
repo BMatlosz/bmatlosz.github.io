@@ -38,11 +38,11 @@ function function_scaneDev() {
         console.log('> Characteristic. Read Val...');
         
         rxCharacteristic = characteristic;
-        log(2, "RX characteristic:"+JSON.stringify(rxCharacteristic));
+        console.log(2, "RX characteristic:"+JSON.stringify(rxCharacteristic));
         rxCharacteristic.addEventListener('characteristicvaluechanged', function(event) {
           var value = event.target.value.buffer; // get arraybuffer
           var str = ab2str(value);
-          log(3, "Received "+JSON.stringify(str));
+          console.log(3, "Received "+JSON.stringify(str));
           connection.emit('data', str);
         });
         return rxCharacteristic.startNotifications();
