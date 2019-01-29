@@ -88,13 +88,13 @@ function randomBar(date, lastClose) {
 }
 
 
-while (data.length < 60) {
-    date = date.clone().add(1, 'd');
-    if (date.isoWeekday() <= 5) {
-        data.push(randomBar(Date, data[data.length - 1].y));
-        labels.push(date);
-    }
-}
+// while (data.length < 60) {
+//     date = date.clone().add(1, 'd');
+//     if (date.isoWeekday() <= 5) {
+//         data.push(randomBar(Date, data[data.length - 1].y));
+//         labels.push(date);
+//     }
+// }
 
 var canvas = document.getElementById("chart1");
 var ctx = canvas.getContext("2d");
