@@ -103,8 +103,8 @@ var cfg = {
         labels: labels,
         datasets: [{
             label: 'CHRT - Chart.js Corporation',
-            backgroundColor: rgb(255, 0, 0),
-            borderColor: window.chartColors.red,
+            // backgroundColor: rgb(255, 0, 0),
+            // borderColor: window.chartColors.red,
             data: data,
             type: 'line',
             pointRadius: 0,
