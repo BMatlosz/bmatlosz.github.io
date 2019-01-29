@@ -10,6 +10,10 @@ var txCharacteristic = undefined;
 var rxCharacteristic;
 var rxCharacteristic2;
 
+function ab2str(buf) {
+    return String.fromCharCode.apply(null, new Uint8Array(buf));
+}
+
 function function_scaneDev() {
     console.log("Click scane button");
     navigator.bluetooth.requestDevice({
