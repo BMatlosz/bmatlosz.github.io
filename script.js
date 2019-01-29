@@ -13,18 +13,8 @@ var rxCharacteristic2;
 var currentdate = new Date();
 var dateFormat = 'MMMM DD YYYY';
 var date = currentdate.getHours()+ ":" + currentdate.getMinutes() + ":" + currentdate.getSeconds()
-var data = [];
+var data = [10];
 var labels = [date];
-
-var canvas = document.getElementById("chart1");
-var ctx = canvas.getContext("2d");
-
-
-
-// var canvas = document.getElementById("chart1");
-// var ctx = canvas.getContext("2d");
-ctx.canvas.width = 1000;
-ctx.canvas.height = 300;
 
 var color = Chart.helpers.color;
 var cfg = {
@@ -61,7 +51,16 @@ var cfg = {
         }
     }
 };
-window.myLine = new Chart(ctx, cfg);
+
+window.onload = function() {
+    var canvas = document.getElementById("chart1");
+    var ctx = canvas.getContext("2d");
+    
+    ctx.canvas.width = 1000;
+    ctx.canvas.height = 300;
+
+    window.myLine = new Chart(ctx, cfg);
+};
 
 
 /*
