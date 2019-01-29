@@ -32,14 +32,14 @@ function function_scaneDev() {
     })
     .then(service => {
         console.log(2, "Got service");
-        return service.getCharacteristic(NORDIC_TX); // tx - send , rx - recaive
+        return service.getCharacteristic(NORDIC_RX); // tx - send , rx - read
     })
     .then(characteristic  => {
-        console.log('> Characteristic...');
+        console.log('> Characteristic. Read Val...');
         debugger
-        return characteristic.writeValue("LED1.set()\n");
+        return characteristic.readValue();
         // rxCharacteristic = characteristic;
-        // rxCharacteristic2 = characteristic;
+        // rxCharacteristic2 = characteristic; 
 
         // rxCharacteristic.addEventListener(NORDIC_RX,
         //     handleBatteryLevelChanged);
@@ -48,9 +48,10 @@ function function_scaneDev() {
         // rxCharacteristic2.addEventListener('rising',
         // handleBatteryLevelChanged);
     })          
-    // .then(value => {
-    //     console.log("Odczyt danej: " + value.getUint8(0));
-    // })
+    .then(value => {
+        var testVal = value;
+        console.log("Odczyt danej: " + value.getUint8(0));
+    })
     .catch(error => { console.log(error); })    
 }
 
