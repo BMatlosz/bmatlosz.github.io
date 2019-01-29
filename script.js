@@ -114,7 +114,7 @@ function function_scaneDev() {
             console.log(3, "Received "+JSON.stringify(str));
             
             data.push(value);
-            labels.push(i++);
+            labels.push(id++);
             window.myLine.update();
 
             connection.emit('data', str);
