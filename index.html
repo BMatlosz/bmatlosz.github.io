@@ -39,6 +39,13 @@
 			<button type="button" id="scaneBtn" onclick="function_scaneDev()" class="btn btn-primary btn-md">Scane Bluetooth Devices</button>
 		</div>
 
-		<canvas id="chart1" style="display: block; width: 1415px; height: 707px;"></canvas>
+		<select id="type">
+			<option value="line">Line</option>
+			<option value="bar">Bar</option>
+		</select>
+
+		<div style="width:1000px">
+			<canvas id="chart1"></canvas>
+		</div>
 	</body>
 </html>
