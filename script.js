@@ -23,9 +23,9 @@ var cfg = {
     data: {
         labels: labels,
         datasets: [{
-            label: 'CHRT - Chart.js Corporation',
+            label: 'Test',
             backgroundColor: "#f38b4a",
-            borderColor: "#fff",
+            borderColor: "f38b4a",
             data: data,
             type: 'line',
             pointRadius: 0,
@@ -46,7 +46,7 @@ var cfg = {
             yAxes: [{
                 scaleLabel: {
                     display: true,
-                    labelString: 'Closing price ($)'
+                    labelString: 'Read Value'
                 }
             }]
         }
