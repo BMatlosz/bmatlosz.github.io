@@ -115,11 +115,11 @@ function function_scaneDev() {
         console.log(2, "RX characteristic:"+JSON.stringify(rxCharacteristic));
         rxCharacteristic.addEventListener('characteristicvaluechanged', function(event) {
             var value = event.target.value.buffer; // get arraybuffer
-            var str = ab2str(value);
+            var str = ab2str(value.getUint8(0));
             console.log(3, "Received "+JSON.stringify(str));
             
             var itemList = document.getElementById("consoleList")
-            itemList.append("<li class='list-group-item'>"+ idDevice +" | " + nameDevice + " | " + str + "</li>")
+            itemList.append("+ idDevice +" | " + nameDevice + " |  + str )
             connection.emit('data', str);
         });
         return rxCharacteristic.startNotifications();
