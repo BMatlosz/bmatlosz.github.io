@@ -36,17 +36,16 @@ function function_scaneDev() {
     })
     .then(characteristic  => {
         console.log('> Characteristic. Read Val...');
-        debugger
-        return characteristic.readValue();
-        // rxCharacteristic = characteristic;
-        // rxCharacteristic2 = characteristic; 
-
-        // rxCharacteristic.addEventListener(NORDIC_RX,
-        //     handleBatteryLevelChanged);
-
         
-        // rxCharacteristic2.addEventListener('rising',
-        // handleBatteryLevelChanged);
+        rxCharacteristic = characteristic;
+        log(2, "RX characteristic:"+JSON.stringify(rxCharacteristic));
+        rxCharacteristic.addEventListener('characteristicvaluechanged', function(event) {
+          var value = event.target.value.buffer; // get arraybuffer
+          var str = ab2str(value);
+          log(3, "Received "+JSON.stringify(str));
+          connection.emit('data', str);
+        });
+        return rxCharacteristic.startNotifications();
     })          
     .then(value => {
         var testVal = value;
