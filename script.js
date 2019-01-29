@@ -66,7 +66,10 @@ function function_scaneDev() {
     .catch(error => { console.log(error); })    
 }
 
-
+var ctx = document.getElementById('chart1').getContext('2d');
+		ctx.canvas.width = 1000;
+        ctx.canvas.height = 300;
+        
 var myLineChart = new Chart(ctx, {
     type: 'line',
     data: [{
