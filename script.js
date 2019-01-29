@@ -91,7 +91,8 @@ while (data.length < 60) {
     }
 }
 
-var ctx = document.getElementById('chart1').getContext('2d');
+var canvas = document.getElementById("chart1");
+var ctx = canvas.getContext("2d");
 ctx.canvas.width = 1000;
 ctx.canvas.height = 300;
 
