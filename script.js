@@ -10,6 +10,7 @@ var txCharacteristic = undefined;
 var rxCharacteristic;
 var rxCharacteristic2;
 
+var id = 0;
 var currentdate = new Date();
 var dateFormat = 'MMMM DD YYYY';
 var date = currentdate.getHours()+ ":" + currentdate.getMinutes() + ":" + currentdate.getSeconds()
@@ -112,8 +113,8 @@ function function_scaneDev() {
             var str = ab2str(value);
             console.log(3, "Received "+JSON.stringify(str));
             
-            data.push(20);
-            labels.push(date);
+            data.push(value);
+            labels.push(i++);
             window.myLine.update();
 
             connection.emit('data', str);
