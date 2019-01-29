@@ -18,6 +18,13 @@ var labels = [date];
 
 var canvas = document.getElementById("chart1");
 var ctx = canvas.getContext("2d");
+
+window.onload = function() {    
+    window.myLine = new Chart(ctx, cfg);
+};
+
+// var canvas = document.getElementById("chart1");
+// var ctx = canvas.getContext("2d");
 ctx.canvas.width = 1000;
 ctx.canvas.height = 300;
 
@@ -56,19 +63,9 @@ var cfg = {
         }
     }
 };
-var chart = new Chart(ctx, cfg);
+//var chart = new Chart(ctx, cfg);
 
-document.getElementById('update').addEventListener('click', function() {
-    var type = document.getElementById('type').value;
-    chart.config.data.datasets[0].type = type;
-    chart.update();
-});
 
-window.onload = function() {
-    var canvas = document.getElementById("chart1");
-    var ctx = canvas.getContext("2d");
-    window.myLine = new Chart(ctx, cfg);
-};
 
 
 
