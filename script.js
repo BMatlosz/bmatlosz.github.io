@@ -21,13 +21,60 @@ var ctx = canvas.getContext("2d");
 ctx.canvas.width = 1000;
 ctx.canvas.height = 300;
 
+var color = Chart.helpers.color;
+var cfg = {
+    type: 'bar',
+    data: {
+        labels: labels,
+        datasets: [{
+            label: 'CHRT - Chart.js Corporation',
+            // backgroundColor: rgb(255, 0, 0),
+            // borderColor: window.chartColors.red,
+            data: data,
+            type: 'line',
+            pointRadius: 0,
+            fill: false,
+            lineTension: 0,
+            borderWidth: 2
+        }]
+    },
+    options: {
+        scales: {
+            xAxes: [{
+                type: 'time',
+                distribution: 'series',
+                ticks: {
+                    source: 'labels'
+                }
+            }],
+            yAxes: [{
+                scaleLabel: {
+                    display: true,
+                    labelString: 'Closing price ($)'
+                }
+            }]
+        }
+    }
+};
+var chart = new Chart(ctx, cfg);
+
+document.getElementById('update').addEventListener('click', function() {
+    var type = document.getElementById('type').value;
+    chart.config.data.datasets[0].type = type;
+    chart.update();
+});
+
 window.onload = function() {
     var canvas = document.getElementById("chart1");
     var ctx = canvas.getContext("2d");
-    window.myLine = new Chart(ctx, config);
+    window.myLine = new Chart(ctx, cfg);
 };
 
 
+
+/*
+    ble api
+*/
 var connection = {
     on : function(evt,cb) { this["on"+evt]=cb; },
     emit : function(evt,data) { if (this["on"+evt]) this["on"+evt](data); },
@@ -104,48 +151,7 @@ function randomBar(date, lastClose) {
 
 
 
-var color = Chart.helpers.color;
-var cfg = {
-    type: 'bar',
-    data: {
-        labels: labels,
-        datasets: [{
-            label: 'CHRT - Chart.js Corporation',
-            // backgroundColor: rgb(255, 0, 0),
-            // borderColor: window.chartColors.red,
-            data: data,
-            type: 'line',
-            pointRadius: 0,
-            fill: false,
-            lineTension: 0,
-            borderWidth: 2
-        }]
-    },
-    options: {
-        scales: {
-            xAxes: [{
-                type: 'time',
-                distribution: 'series',
-                ticks: {
-                    source: 'labels'
-                }
-            }],
-            yAxes: [{
-                scaleLabel: {
-                    display: true,
-                    labelString: 'Closing price ($)'
-                }
-            }]
-        }
-    }
-};
-var chart = new Chart(ctx, cfg);
 
-document.getElementById('update').addEventListener('click', function() {
-    var type = document.getElementById('type').value;
-    chart.config.data.datasets[0].type = type;
-    chart.update();
-});
 
 
 
