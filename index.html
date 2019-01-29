@@ -16,10 +16,12 @@
 		
 		<script src="https://www.puck-js.com/puck.js"></script>
 
-		<div class="container marketing">
-			<div class="jumbotron">
+		<div class="jumbotron">
+			<div class="container">
 				<h1 class="display-4">Web Ble API</h1>
 			</div>
+		</div>
+		<div class="container">
 			<h3>Lib Puck.js</h3>
 			<button class="btn btn-primary btn-md" type="button" onclick="Puck.write('LED1.set();\n');">On!</button>
 			<button class="btn btn-primary btn-md" type="button" onclick="Puck.write('LED1.reset();\n');">Off!</button>
@@ -27,6 +29,10 @@
 			<h3>BLE API</h3>
 			<button  class="btn btn-primary btn-md" type="button" id="scaneBtn" onclick="function_scaneDev()">Scane Bluetooth Devices</button>
 
+
+
+			<ul id="consoleList" class="list-group">
+			</ul>
 		</div>
 
 		<!-- <div style="width:1000px">

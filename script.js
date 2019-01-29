@@ -113,10 +113,8 @@ function function_scaneDev() {
             var str = ab2str(value);
             console.log(3, "Received "+JSON.stringify(str));
             
-            data.push(parseInt(str));
-            labels.push(id++);
-            window.myLine.update();
-
+            var itemList = document.getElementById("consoleList")
+            itemList.append("<li class='list-group-item'>"+ device.id +" | " + device.name + " | " + str + "</li>")
             connection.emit('data', str);
         });
         return rxCharacteristic.startNotifications();
