@@ -13,6 +13,8 @@ var rxCharacteristic2;
 var nameDevice = "";
 var idDevice = "";
 
+var ul = document.querySelector("ul");
+
 // var id = 0;
 // var currentdate = new Date();
 // var dateFormat = 'MMMM DD YYYY';
@@ -118,8 +120,12 @@ function function_scaneDev() {
             var str = ab2str(value);
             console.log(3, "Received "+JSON.stringify(str));
             
-            var itemList = document.getElementById("consoleList");
-            itemList.append(idDevice +" | " + nameDevice + " | " + str + "\n");
+            var li = document.createElement("li");
+            // Add Bootstrap class to the list element
+            li.classList.add("list-group-item");
+            li.appendChild(document.createTextNode(idDevice +" | " + nameDevice + " | " + str + "\n"));
+            ul.appendChild(li);
+            
             connection.emit('data', str);
         });
         return rxCharacteristic.startNotifications();
