@@ -10,58 +10,58 @@ var txCharacteristic = undefined;
 var rxCharacteristic;
 var rxCharacteristic2;
 
-var id = 0;
-var currentdate = new Date();
-var dateFormat = 'MMMM DD YYYY';
-var date = currentdate.getHours()+ ":" + currentdate.getMinutes() + ":" + currentdate.getSeconds()
-var data = [10];
-var labels = [date];
+// var id = 0;
+// var currentdate = new Date();
+// var dateFormat = 'MMMM DD YYYY';
+// var date = currentdate.getHours()+ ":" + currentdate.getMinutes() + ":" + currentdate.getSeconds()
+// var data = [10];
+// var labels = [date];
 
-var color = Chart.helpers.color;
-var cfg = {
-    type: 'bar',
-    data: {
-        labels: labels,
-        datasets: [{
-            label: 'Test',
-            backgroundColor: "#f38b4a",
-            borderColor: "f38b4a",
-            data: data,
-            type: 'line',
-            pointRadius: 0,
-            fill: false,
-            lineTension: 0,
-            borderWidth: 2
-        }]
-    },
-    options: {
-        scales: {
-            xAxes: [{
-                type: 'time',
-                distribution: 'series',
-                ticks: {
-                    source: 'labels'
-                }
-            }],
-            yAxes: [{
-                scaleLabel: {
-                    display: true,
-                    labelString: 'Read Value'
-                }
-            }]
-        }
-    }
-};
+// var color = Chart.helpers.color;
+// var cfg = {
+//     type: 'bar',
+//     data: {
+//         labels: labels,
+//         datasets: [{
+//             label: 'Test',
+//             backgroundColor: "#f38b4a",
+//             borderColor: "f38b4a",
+//             data: data,
+//             type: 'line',
+//             pointRadius: 0,
+//             fill: false,
+//             lineTension: 0,
+//             borderWidth: 2
+//         }]
+//     },
+//     options: {
+//         scales: {
+//             xAxes: [{
+//                 type: 'time',
+//                 distribution: 'series',
+//                 ticks: {
+//                     source: 'labels'
+//                 }
+//             }],
+//             yAxes: [{
+//                 scaleLabel: {
+//                     display: true,
+//                     labelString: 'Read Value'
+//                 }
+//             }]
+//         }
+//     }
+// };
 
-window.onload = function() {
-    var canvas = document.getElementById("chart1");
-    var ctx = canvas.getContext("2d");
+// window.onload = function() {
+//     var canvas = document.getElementById("chart1");
+//     var ctx = canvas.getContext("2d");
     
-    ctx.canvas.width = 1000;
-    ctx.canvas.height = 300;
+//     ctx.canvas.width = 1000;
+//     ctx.canvas.height = 300;
 
-    window.myLine = new Chart(ctx, cfg);
-};
+//     window.myLine = new Chart(ctx, cfg);
+// };
 
 
 /*
