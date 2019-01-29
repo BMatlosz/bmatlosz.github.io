@@ -16,6 +16,18 @@ var date = currentdate.getHours()+ ":" + currentdate.getMinutes() + ":" + curren
 var data = [];
 var labels = [date];
 
+var canvas = document.getElementById("chart1");
+var ctx = canvas.getContext("2d");
+ctx.canvas.width = 1000;
+ctx.canvas.height = 300;
+
+window.onload = function() {
+    var canvas = document.getElementById("chart1");
+    var ctx = canvas.getContext("2d");
+    window.myLine = new Chart(ctx, config);
+};
+
+
 var connection = {
     on : function(evt,cb) { this["on"+evt]=cb; },
     emit : function(evt,data) { if (this["on"+evt]) this["on"+evt](data); },
@@ -63,6 +75,8 @@ function function_scaneDev() {
             console.log(3, "Received "+JSON.stringify(str));
             data.push(str);
             labels.push(date);
+            window.myLine.update();
+
             connection.emit('data', str);
         });
         return rxCharacteristic.startNotifications();
@@ -88,18 +102,7 @@ function randomBar(date, lastClose) {
 }
 
 
-// while (data.length < 60) {
-//     date = date.clone().add(1, 'd');
-//     if (date.isoWeekday() <= 5) {
-//         data.push(randomBar(Date, data[data.length - 1].y));
-//         labels.push(date);
-//     }
-// }
 
-var canvas = document.getElementById("chart1");
-var ctx = canvas.getContext("2d");
-ctx.canvas.width = 1000;
-ctx.canvas.height = 300;
 
 var color = Chart.helpers.color;
 var cfg = {
