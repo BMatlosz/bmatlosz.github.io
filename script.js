@@ -63,9 +63,11 @@ function function_scaneDev() {
         console.log(2, "RX characteristic:"+JSON.stringify(rxCharacteristic));
         rxCharacteristic.addEventListener('characteristicvaluechanged', function(event) {
             var value = event.target.value.buffer; // get arraybuffer
+            var newstr = new TextDecoder("utf-8").decode(value);
+            
             var str = ab2str(value);
             console.log(3, "Received "+JSON.stringify(str));
-            
+            console.log(4, newstr);
             var li = document.createElement("li");
             // Add Bootstrap class to the list element
             li.classList.add("list-group-item");
