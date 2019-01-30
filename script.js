@@ -63,8 +63,7 @@ function function_scaneDev() {
         console.log(2, "RX characteristic:"+JSON.stringify(rxCharacteristic));
         rxCharacteristic.addEventListener('characteristicvaluechanged', function(event) {
             var value = event.target.value.buffer; // get arraybuffer
-            var newstr = new TextDecoder("utf-8").decode(value);
-            
+            var newstr = new DataView(value);
             var str = ab2str(value);
             console.log(3, "Received "+JSON.stringify(str));
             console.log(4, newstr);
