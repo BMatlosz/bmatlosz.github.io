@@ -78,8 +78,8 @@ function function_scaneDev() {
         return rxCharacteristic.startNotifications();
     })          
     .then(value => {
-        var testVal = value;
-        console.log("Odczyt danej: " + value.getUint8(0));
+        var testVal =  newstr = new DataView(value);
+        console.log("Odczyt danej: " + testVal);
     })
     .catch(error => { console.log(error); })    
 }
