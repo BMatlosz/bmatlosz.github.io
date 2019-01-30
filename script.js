@@ -77,10 +77,10 @@ function function_scaneDev() {
         });
         return rxCharacteristic.startNotifications();
     })          
-    .then(value => {
-        var testVal =  newstr = new DataView(value);
-        console.log("Odczyt danej: " + testVal);
-    })
+    // .then(value => {
+    //     var testVal =  new DataView(value);
+    //     console.log("Odczyt danej: " + testVal);
+    // })
     .catch(error => { console.log(error); })    
 }
 
