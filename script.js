@@ -76,7 +76,7 @@ function function_scaneDev() {
             connection.emit('data', str);
         });
         return rxCharacteristic.startNotifications();
-    })          
+    })
     // .then(value => {
     //     var testVal =  new DataView(value);
     //     console.log("Odczyt danej: " + testVal);
