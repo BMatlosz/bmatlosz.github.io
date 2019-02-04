@@ -30,6 +30,16 @@ function ab2str(buf) {
     return String.fromCharCode.apply(null, new Uint8Array(buf));
 }
 
+function hanlder_start_notification()
+{
+
+}
+
+function hanlder_stop_notification()
+{
+
+}
+
 function function_scaneDev() {
     console.log("Click scane button");
     navigator.bluetooth.requestDevice({
@@ -54,7 +64,7 @@ function function_scaneDev() {
     })
     .then(service => {
         console.log(2, "Got service");
-        return service.getCharacteristic(NORDIC_RX); // tx - send , rx - read
+        return service.getCharacteristic(0x180F); // tx - send , rx - read
     })
     .then(characteristic  => {
         console.log('> Characteristic. Read Val...');
