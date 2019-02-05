@@ -70,7 +70,9 @@ function function_scaneDev() {
         console.log('> Characteristic. Read Val...');
         
         rxCharacteristic = characteristic;
-        console.log(2, "RX characteristic:"+JSON.stringify(rxCharacteristic));
+        
+        console.log(2, "RX characteristic:" + JSON.stringify(rxCharacteristic));
+
         rxCharacteristic.addEventListener('characteristicvaluechanged', function(event) {
             var value = event.target.value.buffer; // get arraybuffer
             var newstr = new DataView(value);
