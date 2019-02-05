@@ -5,6 +5,15 @@ var NORDIC_SERVICE = "6e400001-b5a3-f393-e0a9-e50e24dcca9e";
 var NORDIC_TX = "6e400002-b5a3-f393-e0a9-e50e24dcca9e";
 var NORDIC_RX = "6e400003-b5a3-f393-e0a9-e50e24dcca9e";
 
+/*
+MOBILE GATT SERVICE
+*/
+var MOBILE_SERVICE = "0000fff0-0000-1000-8000-00805f9b34fb"
+var MOBILE_READ = "0000fff1-0000-1000-8000-00805f9b34fb"
+var MOBILE_READ_NOTIFY = "0000fff2-0000-1000-8000-00805f9b34fb"
+var MOBILE_READ_WRITE = "0000fff3-0000-1000-8000-00805f9b34fb"
+
+
 var btServer = undefined;
 var txCharacteristic = undefined;
 var rxCharacteristic;
@@ -46,8 +55,7 @@ function function_scaneDev() {
         filters: [
             { namePrefix: 'Puck.js' },
             { namePrefix: 'Pixl.js' },
-            { namePrefix: 'berecz' },
-            { namePrefix: 'EspruinoHub' }
+            { namePrefix: 'berecz' }
             //{ services: [NORDIC_SERVICE] }
         ],
     })
@@ -60,11 +68,11 @@ function function_scaneDev() {
     })
     .then(server => {
         console.log(1, "Connected");
-        return server.getPrimaryService(NORDIC_SERVICE);
+        return server.getPrimaryService(MOBILE_SERVICE);
     })
     .then(service => {
         console.log(2, "Got service");
-        return service.getCharacteristic(0x180F); // tx - send , rx - read
+        return service.getCharacteristic(MOBILE_READ_WRITE); // tx - send , rx - read
     })
     .then(characteristic  => {
         console.log('> Characteristic. Read Val...');
