@@ -63,9 +63,11 @@ function getSupportedProperties(characteristic) {
 function function_scaneDev() {
     console.log('Requesting any Bluetooth Device...');
     navigator.bluetooth.requestDevice({
-        // filters: [...] <- Prefer filters to save energy & show relevant devices.
-           acceptAllDevices: true,
-           optionalServices: [STM32_SERVICE]
+            filters: [{
+                services: [STM32_SERVICE]
+            }]
+           //acceptAllDevices: true,
+           //optionalServices: [STM32_SERVICE]
         })
        .then(device => {
             console.log('Connecting to GATT Server...');
