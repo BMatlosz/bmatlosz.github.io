@@ -75,7 +75,7 @@ function function_scaneDev() {
     })
     .then(server => {
         console.log(1, "Connected");
-        return server.getPrimaryService();
+        return server.getPrimaryServices();
     })
     .then(service => {
         console.log(2, "Got service");
