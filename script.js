@@ -48,14 +48,16 @@ function hanlder_stop_notification()
 function function_scaneDev() {
     console.log("Click scane button");
     navigator.bluetooth.requestDevice({
-        acceptAllDevices: true,
+        //acceptAllDevices: true,
         //filters: [
         //     { namePrefix: 'Puck.js' },
         //     { namePrefix: 'Pixl.js' },
 //             { namePrefix: '21-STM32' },
         //    { services: [STM32_SERVICE] }
         //],
-        
+        filters: [
+            { services: [STM32_SERVICE] }
+        ],
         optionalServices: [STM32_SERVICE]
     })
     .then(device => {
