@@ -50,6 +50,36 @@ function readCharacteristicValue(characteristicUuid) {
     });
 };
 
+
+function handleNotifications(event) {
+    let value = event.target.value;
+    let a = [];
+    // Convert raw data bytes to hex values just for the sake of showing something.
+    // In the "real" world, you'd use data.getUint8, data.getUint16 or even
+    // TextDecoder to process raw data bytes.
+    for (let i = 0; i < value.byteLength; i++) {
+      a.push('0x' + ('00' + value.getUint8(i).toString(16)).slice(-2));
+    }
+    cosnole.log('> ' + a.join(' '));
+  }
+var myCharacteristicNotifi;
+function StartNotification(characteristicUuid) {
+    let startNotifi = _characteristics.get(characteristicUuid);
+    return startNotifi.startNotifications()
+        //.then(() => characteristic);
+        .then(() => {
+            console.log('>> Start notification...');
+            myCharacteristicNotifi.addEventListener('characteristicvaluechanged',
+            handleNotifications);
+        });
+};
+
+function StopNotification(characteristicUuid) {
+    let stopNotifi = _characteristics.get(characteristicUuid);
+    return stopNotifi.stopNotifications()
+        .then(() => characteristic);
+};
+
 /* ***************************************************************
 Action button
 *************************************************************** */
@@ -74,13 +104,12 @@ function hanlder_turn_off_blue_led()
 
 function hanlder_linstener_btn_3() {
     console.log('Press listener button...');
-    return readCharacteristicValue(STM32_NOTIFY)
-    .then(data => {
-        let newData = data.getUint8(0);
-        console.log('New date: ' + newData);
-    })
-
+    return StartNotification(STM32_NOTIFY);
 }
+
+
+// --------------------------------------------------------------
+// Scaner devices....
 function function_scaneDev() {
     console.log('Requesting any Bluetooth Device...');
     navigator.bluetooth.requestDevice({
