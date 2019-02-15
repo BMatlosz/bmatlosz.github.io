@@ -57,8 +57,14 @@ function handleNotifications(event) {
     // Convert raw data bytes to hex values just for the sake of showing something.
     // In the "real" world, you'd use data.getUint8, data.getUint16 or even
     // TextDecoder to process raw data bytes.
+    console.log('VAL 0: ' + ('00' + value.getUint8(0).toString(16)).slice(-2));
+    console.log('VAL 0: ' + ('00' + value.getUint8(1).toString(16)).slice(-2));
+
+    document.getElementById("triggerCout").innerHTML = ('00' + value.getUint8(1).toString(16)).slice(-2);
+    
     for (let i = 0; i < value.byteLength; i++) {
-      a.push('0x' + ('00' + value.getUint8(i).toString(16)).slice(-2));
+        a.push('0x' + ('00' + value.getUint8(i).toString(16)).slice(-2));
+        
     }
     console.log('> ' + a.join(' '));
 };
