@@ -16,41 +16,52 @@ var STM32_NOTIFY = "0000fe42-8e22-4541-9d4c-21edae82ed19";
  * Varible
  */
 var nameDevice = "";
-var idDevice = "";
-var idCharacteristic;
+var global_Device;
+var global_Characteristic;
+var _characteristics = new Map();
 
 
 
 var ul = document.querySelector("ul");
 
-/*
-    ble api
-*/
-var connection = {
-    on : function(evt,cb) { this["on"+evt]=cb; },
-    emit : function(evt,data) { if (this["on"+evt]) this["on"+evt](data); },
-    isOpen : false,
-    isOpening : true,
-    txInProgress : false
-};
-
 function ab2str(buf) {
     return String.fromCharCode.apply(null, new Uint8Array(buf));
 }
 
-function hanlder_start_notification()
-{
-    console.log('Press Start Notification...');
-    var resetEnergyExpended = Uint8Array.of(1);
-    idCharacteristic.writeValue(resetEnergyExpended);
+/* ***************************************************************
+    Function ble connection
+*************************************************************** */
+function CacheCharacteristic(service, characteristicUuid) {
+    console.log('>> Function CacheCharacteristic');
+    return service.getCharacteristic(characteristicUuid)
+    .then(characteristic => {
+        _characteristics.set(characteristicUuid, characteristic);
+    });
 }
 
-function hanlder_stop_notification()
+/* ***************************************************************
+Action button
+*************************************************************** */
+
+function hanlder_turn_on_blue_led()
 {
-    console.log('Press Stop Notification...');
-    var resetEnergyExpended = Uint8Array.of(0);
-    idCharacteristic.writeValue(resetEnergyExpended);
+    console.log('Press Turn on Blue LED...');
+    let write_characteristic = _characteristics.get(STM32_WRITE);
+    var resetEnergyExpended = Uint8Array.of(1);
+    return write_characteristic.writeValue(resetEnergyExpended);
 }
+
+function hanlder_turn_off_blue_led()
+{
+    console.log('Press Turn off Blue LED...');
+    let write_characteristic = _characteristics.get(STM32_WRITE);
+    var resetEnergyExpended = Uint8Array.of(0);
+    return write_characteristic.writeValue(resetEnergyExpended);
+    // var resetEnergyExpended = Uint8Array.of(0);
+    // global_Characteristic.writeValue(resetEnergyExpended);
+}
+
+
 
 function function_scaneDev() {
     console.log('Requesting any Bluetooth Device...');
@@ -65,25 +76,35 @@ function function_scaneDev() {
             console.log('Connecting to GATT Server...');
             return device.gatt.connect();
        })
-        .then(server => { 
+       .then(server => { 
             console.log('Server get Primary Serice...');
-            return server.getPrimaryService(STM32_SERVICE)
+            return Promise.all([
+                server.getPrimaryService(STM32_SERVICE).then(service => {
+                    return Promise.all([
+                        CacheCharacteristic(service, STM32_WRITE),
+                        CacheCharacteristic(service, STM32_NOTIFY)
+                    ])
+                })
+            ])
         })
-        .then(service => {
-            console.log('Service get Characteristic...');
-            return service.getCharacteristic(STM32_WRITE);
-        })
-        .then(characteristic => {
-            // Writing 1 is the signal to reset energy expended.
-            console.log('Characteristic write Value..');
-            idCharacteristic = characteristic;
-            // var resetEnergyExpended = Uint8Array.of(1);
-            // return characteristic.writeValue(resetEnergyExpended);
-        })
+        // .then(server => { 
+        //     console.log('Server get Primary Serice...');
+        //     return server.getPrimaryService(STM32_SERVICE)
+        // })
+        // .then(service => {
+        //     console.log('Service get Characteristic...');
+        //     return service.getCharacteristic(STM32_WRITE);
+        // })
+        // .then(characteristic => {
+        //     console.log('Characteristic write Value..');
+        //     idCharacteristic = characteristic;
+        // })
        .catch(error => {
-            console.log('Argh! ' + error);
+            console.log('Argh! Not working... tararara >.< ' + error);
     });
 }
+
+
 
 
 
