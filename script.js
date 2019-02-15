@@ -50,23 +50,25 @@ function function_scaneDev() {
     console.log("Click scane button");
     navigator.bluetooth.requestDevice({
         //acceptAllDevices: true,
-        //filters: [
+        filters: [
         //     { namePrefix: 'Puck.js' },
         //     { namePrefix: 'Pixl.js' },
-//             { namePrefix: '21-STM32' },
+             { namePrefix: '21-STM32' }
         //    { services: [STM32_SERVICE] }
-        //],
-        filters: [
-            { services: [STM32_SERVICE] },
-            { services: [NORDIC_SERVICE] }
         ],
+        // filters: [
+        //     { services: [STM32_SERVICE] },
+        //     { services: [NORDIC_SERVICE] }
+        // ],
         
     })
     .then(device => {
         nameDevice = device.name;
         idDevice = device.id;
+        gatt = device.gatt.conne
         console.log(1, 'Device Name:       ' + nameDevice);
         console.log(1, 'Device ID:         ' + idDevice);
+        console.log(1, 'Connected:        ' + device.gatt.connected);
         return device.gatt.connect();  
     })
     
