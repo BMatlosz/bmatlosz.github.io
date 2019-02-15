@@ -69,7 +69,7 @@ function StartNotification(characteristicUuid) {
         //.then(() => characteristic);
         .then(() => {
             console.log('>> Start notification...');
-            myCharacteristicNotifi.addEventListener('characteristicvaluechanged',
+            startNotifi.addEventListener('characteristicvaluechanged',
             handleNotifications);
         });
 };
