@@ -48,6 +48,8 @@ function hanlder_start_notification()
 function hanlder_stop_notification()
 {
     console.log('Press Stop Notification...');
+    var resetEnergyExpended = Uint8Array.of(1);
+    idCharacteristic.writeValue(resetEnergyExpended);
 }
 
 function function_scaneDev() {
