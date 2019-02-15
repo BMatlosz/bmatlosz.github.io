@@ -48,6 +48,18 @@ function hanlder_stop_notification()
 
 }
 
+/* Utils */
+
+function getSupportedProperties(characteristic) {
+    let supportedProperties = [];
+    for (const p in characteristic.properties) {
+      if (characteristic.properties[p] === true) {
+        supportedProperties.push(p.toUpperCase());
+      }
+    }
+    return '[' + supportedProperties.join(', ') + ']';
+}
+
 function function_scaneDev() {
     console.log('Requesting any Bluetooth Device...');
     navigator.bluetooth.requestDevice({
@@ -118,6 +130,8 @@ function function_scaneDev() {
     // })
     .catch(error => { console.log(error); })    
 }
+
+
 
 function randomNumber(min, max) {
     return Math.random() * (max - min) + min;
