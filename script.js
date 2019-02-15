@@ -49,7 +49,7 @@ function hanlder_stop_notification()
 }
 
 function function_scaneDev() {
-    console.log("Click scane button");
+    console.log('Requesting any Bluetooth Device...');
     navigator.bluetooth.requestDevice({
         //acceptAllDevices: true,
         filters: [
@@ -66,26 +66,32 @@ function function_scaneDev() {
     })
     .then(device => {
         nameDevice = device.name;
-        idDevice = device.id;
-        gatt = device.gatt.conne
-        console.log(1, 'Device Name:       ' + nameDevice);
-        console.log(1, 'Device ID:         ' + idDevice);
-        console.log(1, 'Connected:        ' + device.gatt.connected);
-        return device.gatt.connect();  
+        console.log('Connection to GATT Server. Name devices:' + nameDevice);
+        return device.gatt.connect();
     })
     .then(server => {
-        console.log(1, "Connected");
+        console.log('Getting Services...');
         return server.getPrimaryServices();
     })
-    .then(service => {
-        console.log(2, "Got service");
-        return service.getCharacteristic(STM32_WRITE); // tx - send , rx - read
+    .then(services => {
+        log('Getting Characteristics...');
+        let queue = Promise.resolve();
+        services.forEach(service => {
+        queue = queue.then(_ => service.getCharacteristics().then(characteristics => {
+            log('> Service: ' + service.uuid);
+            characteristics.forEach(characteristic => {
+            log('>> Characteristic: ' + characteristic.uuid + ' ' +
+                getSupportedProperties(characteristic));
+            });
+        }));
+        });
+        return queue;
     })
-    .then(characteristic => {
-        // Writing 1 is the signal to reset energy expended.
-        var resetEnergyExpended = Uint8Array.of(1);
-        return characteristic.writeValue(resetEnergyExpended);
-    })
+    // .then(characteristic => {
+    //     // Writing 1 is the signal to reset energy expended.
+    //     var resetEnergyExpended = Uint8Array.of(1);
+    //     return characteristic.writeValue(resetEnergyExpended);
+    // })
       
     // .then(characteristic  => {
     //     console.log('> Characteristic. Read Val...');
