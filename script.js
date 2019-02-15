@@ -61,7 +61,8 @@ function handleNotifications(event) {
       a.push('0x' + ('00' + value.getUint8(i).toString(16)).slice(-2));
     }
     console.log('> ' + a.join(' '));
-  }
+};
+
 var myCharacteristicNotifi;
 function StartNotification(characteristicUuid) {
     let startNotifi = _characteristics.get(characteristicUuid);
