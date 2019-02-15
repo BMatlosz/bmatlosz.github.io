@@ -62,20 +62,20 @@ function function_scaneDev() {
         console.log(1, 'Device Name:       ' + nameDevice);
         console.log(1, 'Device ID:         ' + idDevice);
         return device.gatt.connect();  
-    })
-    .then(server => {
-        console.log(1, "Connected");
-        return server.getPrimaryService(STM32_SERVICE);
-    })
-    .then(service => {
-        console.log(2, "Got service");
-        return service.getCharacteristic(STM32_WRITE); // tx - send , rx - read
-    })
-    .then(characteristic => {
-        // Writing 1 is the signal to reset energy expended.
-        var resetEnergyExpended = Uint8Array.of(1);
-        return characteristic.writeValue(resetEnergyExpended);
-    })
+    // })
+    // .then(server => {
+    //     console.log(1, "Connected");
+    //     return server.getPrimaryService(STM32_SERVICE);
+    // })
+    // .then(service => {
+    //     console.log(2, "Got service");
+    //     return service.getCharacteristic(STM32_WRITE); // tx - send , rx - read
+    // })
+    // .then(characteristic => {
+    //     // Writing 1 is the signal to reset energy expended.
+    //     var resetEnergyExpended = Uint8Array.of(1);
+    //     return characteristic.writeValue(resetEnergyExpended);
+    // })
       
     // .then(characteristic  => {
     //     console.log('> Characteristic. Read Val...');
