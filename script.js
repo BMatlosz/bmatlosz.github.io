@@ -73,12 +73,19 @@ function function_scaneDev() {
             console.log('Connecting to GATT Server...');
             return device.gatt.connect();
        })
-        .then(server => server.getPrimaryService(STM32_SERVICE))
-        .then(service => service.getCharacteristic(STM32_WRITE))
+        .then(server => { 
+            console.log('Server get Primary Serice...');
+            return server.getPrimaryService(STM32_SERVICE)
+        })
+        .then(service => {
+            console.log('Service get Characteristic...');
+            return service.getCharacteristic(STM32_WRITE);
+        })
         .then(characteristic => {
-        // Writing 1 is the signal to reset energy expended.
-        var resetEnergyExpended = Uint8Array.of(1);
-        return characteristic.writeValue(resetEnergyExpended);
+            // Writing 1 is the signal to reset energy expended.
+            console.log('Characteristic write Value..');
+            var resetEnergyExpended = Uint8Array.of(1);
+            return characteristic.writeValue(resetEnergyExpended);
         })
 
     //    .then(server => {
