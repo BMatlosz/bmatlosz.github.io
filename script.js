@@ -55,12 +55,13 @@ function hanlder_stop_notification()
 function function_scaneDev() {
     console.log("Click scane button");
     navigator.bluetooth.requestDevice({
-        filters: [
-            { namePrefix: 'Puck.js' },
-            { namePrefix: 'Pixl.js' },
-            { namePrefix: 'berecz' },
-            { services: [STM32_SERVICE] }
-        ],
+        acceptAllDevices: true
+        // filters: [
+        //     { namePrefix: 'Puck.js' },
+        //     { namePrefix: 'Pixl.js' },
+        //     { namePrefix: 'berecz' },
+        //     { services: [STM32_SERVICE] }
+        // ],
     })
     .then(device => {
         nameDevice = device.name;
