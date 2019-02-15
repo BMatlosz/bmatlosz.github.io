@@ -56,9 +56,9 @@ function function_scaneDev() {
         //    { services: [STM32_SERVICE] }
         //],
         filters: [
-            { services: [STM32_SERVICE] }
+            { services: [NORDIC_SERVICE] }
         ],
-        optionalServices: [STM32_SERVICE]
+        
     })
     .then(device => {
         nameDevice = device.name;
