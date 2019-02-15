@@ -7,9 +7,11 @@ var STM32_SERVICE =  '1100fe40-cc7a-482a-984a-7f2ed5b3e58f';
 var NORDIC_TX = "6e400002-b5a3-f393-e0a9-e50e24dcca9e";
 var NORDIC_RX = "6e400003-b5a3-f393-e0a9-e50e24dcca9e";
 
+// COPY_UUID_128(uuid_struct,0x00,0x00,0xfe,0x41,0x8e,0x22,0x45,0x41,0x9d,0x4c,0x21,0xed,0xae,0x82,0xed,0x19)
+// COPY_UUID_128(uuid_struct,0x00,0x00,0xfe,0x42,0x8e,0x22,0x45,0x41,0x9d,0x4c,0x21,0xed,0xae,0x82,0xed,0x19)
 
-var STM32_WRITE = "0000fe41-cc7a-482a-984a-7f2ed5b3e58f";
-var STM32_NOTIFY = "0000fe42-cc7a-482a-984a-7f2ed5b3e58f";
+var STM32_WRITE = "0000fe41-8e22-4541-9d4c-21edae82ed19";
+var STM32_NOTIFY = "0000fe42-8e22-4541-9d4c-21edae82ed19";
 
 var btServer = undefined;
 var txCharacteristic = undefined;
