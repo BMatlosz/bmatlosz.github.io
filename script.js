@@ -37,7 +37,18 @@ function CacheCharacteristic(service, characteristicUuid) {
     .then(characteristic => {
         _characteristics.set(characteristicUuid, characteristic);
     });
-}
+};
+
+function readCharacteristicValue(characteristicUuid) {
+    console.log('>> Function RereadCharacteristicValue...');
+    let read_characteristic = _characteristics.get(characteristicUuid);
+    return read_characteristic.readValue()
+    .then(value => {
+        console.log(value);
+        value = value.buffer ? value : new DataView(value);
+        return value;
+    });
+};
 
 /* ***************************************************************
 Action button
@@ -61,8 +72,15 @@ function hanlder_turn_off_blue_led()
     // global_Characteristic.writeValue(resetEnergyExpended);
 }
 
+function hanlder_linstener_btn_3() {
+    console.log('Press listener button...');
+    return readCharacteristicValue(STM32_NOTIFY)
+    .then(data => {
+        let newData = data.getUint8(0);
+        console.log('New date: ' + newData);
+    })
 
-
+}
 function function_scaneDev() {
     console.log('Requesting any Bluetooth Device...');
     navigator.bluetooth.requestDevice({

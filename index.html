@@ -21,7 +21,7 @@
 		
 		<div class="jumbotron">
 			<div class="container">
-				<h1 class="display-4">Web Ble API</h1>
+				<h1 class="display-4">STM32WB connection</h1>
 			</div>
 		</div>
 		<div class="container">
@@ -29,13 +29,15 @@
 			<button class="btn btn-primary btn-md" type="button" onclick="Puck.write('LED1.set();\n');">On!</button>
 			<button class="btn btn-primary btn-md" type="button" onclick="Puck.write('LED1.reset();\n');">Off!</button>
 			<br></br>
-			<h3>BLE API</h3>
+			<h3>Control evalkit STM32WB</h3>
 			<button  class="btn btn-primary btn-md" type="button" id="scaneBtn" onclick="function_scaneDev()">Scane Bluetooth Devices</button>
+			<p> </p>
+			<h4>Toggle Blue LED</h4>
 			<button  class="btn btn-primary btn-md" type="button" id="hanStartNti" onclick="hanlder_turn_on_blue_led()">Turn on Blue LED</button>
 			<button  class="btn btn-primary btn-md" type="button" id="hanStopNti" onclick="hanlder_turn_off_blue_led()">Turn off Blue LED</button>
 			<p> </p>
-
-
+			<h4>Activate listener</h4>
+			<button  class="btn btn-primary btn-md" type="button" id="hanListener" onclick="hanlder_linstener_btn_3()">Activate</button>
 			<ul class="list-group">
 			</ul>
 		</div>
