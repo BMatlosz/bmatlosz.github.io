@@ -56,6 +56,7 @@ function function_scaneDev() {
         //    { services: [STM32_SERVICE] }
         //],
         filters: [
+            { services: [STM32_SERVICE] },
             { services: [NORDIC_SERVICE] }
         ],
         
