@@ -6,7 +6,7 @@ var NORDIC_SERVICE = "6e400001-b5a3-f393-e0a9-e50e24dcca9e";
 var NORDIC_TX = "6e400002-b5a3-f393-e0a9-e50e24dcca9e";
 var NORDIC_RX = "6e400003-b5a3-f393-e0a9-e50e24dcca9e";
 
-var STM32_SERVICE = "0000fe40-cc7a-482a-984a-7f2ed5b3e58f";
+var STM32_SERVICE = '0000fe40-cc7a-482a-984a-7f2ed5b3e58f';
 var STM32_WRITE = "0000fe41-cc7a-482a-984a-7f2ed5b3e58f";
 var STM32_NOTIFY = "0000fe42-cc7a-482a-984a-7f2ed5b3e58f";
 
@@ -52,8 +52,8 @@ function function_scaneDev() {
         filters: [
         //     { namePrefix: 'Puck.js' },
         //     { namePrefix: 'Pixl.js' },
-        //     { namePrefix: 'berecz' },
-            { services: [STM32_SERVICE] }
+             { namePrefix: '21-STM32' },
+        //    { services: [STM32_SERVICE] }
         ],
     })
     .then(device => {
@@ -63,6 +63,7 @@ function function_scaneDev() {
         console.log(1, 'Device ID:         ' + idDevice);
         return device.gatt.connect();  
     })
+    
     // .then(server => {
     //     console.log(1, "Connected");
     //     return server.getPrimaryService(STM32_SERVICE);
