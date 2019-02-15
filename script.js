@@ -163,7 +163,7 @@ function function_scaneDev() {
     //     });
     //     return rxCharacteristic.startNotifications();
     // })
-    .catch(error => { console.log(error); })    
+    // .catch(error => { console.log(error); })    
 }
 
 
