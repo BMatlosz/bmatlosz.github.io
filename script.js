@@ -70,37 +70,37 @@ function function_scaneDev() {
         console.log(1, 'Device ID:         ' + idDevice);
         return device.gatt.connect();  
     })
-    .then(server => {
-        console.log(1, "Connected");
-        return server.getPrimaryService(MOBILE_SERVICE);
-    })
-    .then(service => {
-        console.log(2, "Got service");
-        return service.getCharacteristic(MOBILE_READ_WRITE); // tx - send , rx - read
-    })
-    .then(characteristic  => {
-        console.log('> Characteristic. Read Val...');
+    // .then(server => {
+    //     console.log(1, "Connected");
+    //     return server.getPrimaryService(MOBILE_SERVICE);
+    // })
+    // .then(service => {
+    //     console.log(2, "Got service");
+    //     return service.getCharacteristic(MOBILE_READ_WRITE); // tx - send , rx - read
+    // })
+    // .then(characteristic  => {
+    //     console.log('> Characteristic. Read Val...');
         
-        rxCharacteristic = characteristic;
+    //     rxCharacteristic = characteristic;
         
-        console.log(2, "RX characteristic:" + JSON.stringify(rxCharacteristic));
+    //     console.log(2, "RX characteristic:" + JSON.stringify(rxCharacteristic));
 
-        rxCharacteristic.addEventListener('characteristicvaluechanged', function(event) {
-            var value = event.target.value.buffer; // get arraybuffer
-            var newstr = new DataView(value);
-            var str = ab2str(value);
-            console.log(3, "Received "+JSON.stringify(str));
-            console.log(4, newstr);
-            var li = document.createElement("li");
-            // Add Bootstrap class to the list element
-            li.classList.add("list-group-item");
-            li.appendChild(document.createTextNode(idDevice +" | " + nameDevice + " | " + str + "\n"));
-            ul.appendChild(li);
+    //     rxCharacteristic.addEventListener('characteristicvaluechanged', function(event) {
+    //         var value = event.target.value.buffer; // get arraybuffer
+    //         var newstr = new DataView(value);
+    //         var str = ab2str(value);
+    //         console.log(3, "Received "+JSON.stringify(str));
+    //         console.log(4, newstr);
+    //         var li = document.createElement("li");
+    //         // Add Bootstrap class to the list element
+    //         li.classList.add("list-group-item");
+    //         li.appendChild(document.createTextNode(idDevice +" | " + nameDevice + " | " + str + "\n"));
+    //         ul.appendChild(li);
             
-            connection.emit('data', str);
-        });
-        return rxCharacteristic.startNotifications();
-    })
+    //         connection.emit('data', str);
+    //     });
+    //     return rxCharacteristic.startNotifications();
+    // })
     .catch(error => { console.log(error); })    
 }
 
