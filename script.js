@@ -62,7 +62,7 @@ function function_scaneDev() {
         console.log(1, 'Device Name:       ' + nameDevice);
         console.log(1, 'Device ID:         ' + idDevice);
         return device.gatt.connect();  
-    // })
+    })
     // .then(server => {
     //     console.log(1, "Connected");
     //     return server.getPrimaryService(STM32_SERVICE);
