@@ -64,35 +64,43 @@ function function_scaneDev() {
     console.log('Requesting any Bluetooth Device...');
     navigator.bluetooth.requestDevice({
             filters: [{
-                services: [STM32_SERVICE]
-            }]
-           //acceptAllDevices: true,
-           //optionalServices: [STM32_SERVICE]
+                 namePrefix: '21-STM32' 
+            }],
+            //acceptAllDevices: true,
+            optionalServices: [STM32_SERVICE]
         })
        .then(device => {
             console.log('Connecting to GATT Server...');
             return device.gatt.connect();
        })
-       .then(server => {
-         // Note that we could also get all services that match a specific UUID by
-         // passing it to getPrimaryServices().
-            console.log('Getting Services...');
-            return server.getPrimaryServices();
-       })
-       .then(services => {
-            console.log('Getting Characteristics...');
-            let queue = Promise.resolve();
-            services.forEach(service => {
-            queue = queue.then(_ => service.getCharacteristics().then(characteristics => {
-                console.log('> Service: ' + service.uuid);
-                characteristics.forEach(characteristic => {
-                    console.log('>> Characteristic: ' + characteristic.uuid + ' ' +
-                    getSupportedProperties(characteristic));
-                });
-            }));
-            });
-            return queue;
-       })
+        .then(server => server.getPrimaryService(STM32_SERVICE))
+        .then(service => service.getCharacteristic(STM32_WRITE))
+        .then(characteristic => {
+        // Writing 1 is the signal to reset energy expended.
+        var resetEnergyExpended = Uint8Array.of(1);
+        return characteristic.writeValue(resetEnergyExpended);
+        })
+
+    //    .then(server => {
+    //      // Note that we could also get all services that match a specific UUID by
+    //      // passing it to getPrimaryServices().
+    //         console.log('Getting Services...');
+    //         return server.getPrimaryServices();
+    //    })
+    //    .then(services => {
+    //         console.log('Getting Characteristics...');
+    //         let queue = Promise.resolve();
+    //         services.forEach(service => {
+    //         queue = queue.then(_ => service.getCharacteristics().then(characteristics => {
+    //             console.log('> Service: ' + service.uuid);
+    //             characteristics.forEach(characteristic => {
+    //                 console.log('>> Characteristic: ' + characteristic.uuid + ' ' +
+    //                 getSupportedProperties(characteristic));
+    //             });
+    //         }));
+    //         });
+    //         return queue;
+    //    })
        .catch(error => {
             console.log('Argh! ' + error);
     });
