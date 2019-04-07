@@ -4,18 +4,17 @@
 		<meta charset="UTF-8">
 		<title>API TEST</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		
-		<!-->link rel="stylesheet" href="/style/style_navbar.scss">
+		<!--link rel="stylesheet" href="/style/style_navbar.scss">
 		<link rel="stylesheet" href="/style/style_grid.scss"-->
-		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+		<link rel="stylesheet" href="/style/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 	</head>
 	<body>
 	
 		<!-- Optional JavaScript -->
 		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
-		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+		<script src="/style/js/query-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+		<script src="style/js/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+		<script src="style/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 		
 		<nav class="navbar navbar-dark fixed-top bg-dark">
 			<a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">ES-SYSTEM S.A.</a>
@@ -29,7 +28,7 @@
 
 		<div class="container-fluid" style="padding-top: 50px;">
 				<div class="row">
-				  <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+					<nav class="col-md-2 d-none d-md-block bg-light sidebar">
 					<div class="sidebar-sticky">
 					  <ul class="nav flex-column">
 						<li class="nav-item">
@@ -69,42 +68,8 @@
 						  </a>
 						</li>
 					  </ul>
-			  
-					  <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-						<span>Saved reports</span>
-						<a class="d-flex align-items-center text-muted" href="#">
-						  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus-circle"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg>
-						</a>
-					  </h6>
-					  <ul class="nav flex-column mb-2">
-						<li class="nav-item">
-						  <a class="nav-link" href="#">
-							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
-							Current month
-						  </a>
-						</li>
-						<li class="nav-item">
-						  <a class="nav-link" href="#">
-							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
-							Last quarter
-						  </a>
-						</li>
-						<li class="nav-item">
-						  <a class="nav-link" href="#">
-							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
-							Social engagement
-						  </a>
-						</li>
-						<li class="nav-item">
-						  <a class="nav-link" href="#">
-							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
-							Year-end sale
-						  </a>
-						</li>
-					  </ul>
 					</div>
-				  </nav>
-			  
+				  </nav>	  
 				  <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4"><div style="padding-top: 50px; position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;" class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div></div><div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:200%;height:200%;left:0; top:0"></div></div></div>
 					<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
 					  <h1 class="h2">Devices</h1>
@@ -114,33 +79,7 @@
 				</div>
 			  </div>
 		
-		<!--div class="jumbotron">
-			<div class="container">
-				<h1 class="display-4">STM32WB connection</h1>
-			</div>
-		</div>
-
-
-		<div class="container">
-			<h3>Control evalkit STM32WB</h3>
-			<button  class="btn btn-primary btn-md" type="button" id="scaneBtn" onclick="function_scaneDev()">Scane Bluetooth Devices</button>
-			<p> </p>
-			<h4>Toggle Blue LED</h4>
-			<button  class="btn btn-primary btn-md" type="button" id="hanStartNti" onclick="hanlder_turn_on_blue_led()">Turn on Blue LED</button>
-			<button  class="btn btn-primary btn-md" type="button" id="hanStopNti" onclick="hanlder_turn_off_blue_led()">Turn off Blue LED</button>
-			<p> </p>
-			<h4>Activate listener</h4>
-			<button  class="btn btn-primary btn-md" type="button" id="hanListener" onclick="hanlder_linstener_btn_3()">Activate</button>
-			<button type="button" class="btn btn-primary">
-				State button <span class="badge badge-light" id="triggerCout">0</span>
-			</button>
-		</div-->
-
-		<!-- <div style="width:1000px">
-			<canvas id="chart1"></canvas>
-		</div> -->
-
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+		<script src="style/js/moment.min.js"></script>
 		<script src="script.js"></script>
 	</body>
 </html>
